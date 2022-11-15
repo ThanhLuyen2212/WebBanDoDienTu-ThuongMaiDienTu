@@ -11,15 +11,22 @@ namespace WebBanDoDienTu.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Admin
     {
         public int IDAdmin { get; set; }
+        [Required]
         public string TenAdmin { get; set; }
+        [Required]
         public string SDT { get; set; }
+        [Required]
         public string DiaChi { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> NgaySinh { get; set; }
+        [Required]
         public string UserName { get; set; }
+        [Required]
         public string Password { get; set; }
     }
 }
