@@ -49,4 +49,5 @@ namespace WebBanDoDienTu.Controllers
             this.soluongmua = soluongmua;
         }
     }
+    // lấy danh sách mặt hàng có nhiều hóa đơn nhất
 }
