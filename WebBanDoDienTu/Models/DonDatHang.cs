@@ -23,18 +23,18 @@ namespace WebBanDoDienTu.Models
     
         public int IDDDH { get; set; }
         public Nullable<System.DateTime> NgayMua { get; set; }
-        [Required]
+       
         public string DiaChiNhanHang { get; set; }
-        [Range(0, 1000)]
+        
         public Nullable<int> TongSoluong { get; set; }
-        [Range(0,int.MaxValue)]
+       
         public Nullable<int> TongTien { get; set; }
         public Nullable<int> IDKH { get; set; }
         public Nullable<bool> TrangThaiThanhToan { get; set; }
-        [DataType(DataType.Date)]
+       
         public Nullable<System.DateTime> NgayThanhToan { get; set; }
         public Nullable<int> IDPT { get; set; }
-        [Required]
+        
         public Nullable<int> IDTrangThai { get; set; }
         public Nullable<int> IDNhanVien { get; set; }
         public string GhiChu { get; set; }

@@ -31,20 +31,21 @@ namespace WebBanDoDienTu.Models
         [Required]
         public string MoTa { get; set; }
         [Required]
-        [Range(0,int.MaxValue)]
+        [Range(1,int.MaxValue)]
         public Nullable<int> DonGia { get; set; }
         [DataType(DataType.Date)]
+        [Required]
         public Nullable<System.DateTime> NgayNhapHang { get; set; }
         [Required]
         [Range(1,int.MaxValue)]
         public Nullable<int> SoLuong { get; set; }
-        [Required]
+       
         public byte[] HinhAnh1 { get; set; }
-        [Required]
+       
         public byte[] HinhAnh2 { get; set; }
-        [Required]
+       
         public byte[] HinhAnh3 { get; set; }
-        [Required]
+       
         public byte[] HinhAnh4 { get; set; }
         public string MoTaChiTiet { get; set; }
     

@@ -101,32 +101,28 @@ namespace WebBanDoDienTu.Controllers
                 donDatHang.NgayMua = DateTime.Now;
                 data.DonDatHangs.Add(donDatHang);
                 data.SaveChanges();
+                Session["DonDatHang"] = donDatHang;
 
                 int tongtien = 0;
                 int _tongHang = 0;
-                try
-                {
-                    // Lấy tưng sản phẩm
-                    GioHang gio = (GioHang)Session["GioHang"];
+               
+                // Lấy tưng sản phẩm
+                GioHang gio = (GioHang)Session["GioHang"];
 
-                    foreach (var item in gio.ListHang)
-                    {
-                        ChiTietDonDatHang detail = new ChiTietDonDatHang();
-                        detail.IDDDH = donDatHang.IDDDH;
-                        detail.IDMH = item.gioHang.IDMH;
-                        detail.SoluongMH = item._soLuongHang;
-
-                        tongtien += (int)(item.gioHang.DonGia * item._soLuongHang);
-                        _tongHang += item._soLuongHang;
-                        data.ChiTietDonDatHangs.Add(detail);
-                        data.SaveChanges();
-                    }
-                }
-                catch (Exception ex)
+                foreach (var item in gio.ListHang)
                 {
-                    string s = ex.Message;
-                    data.DonDatHangs.Remove(donDatHang);
+                    ChiTietDonDatHang detail = new ChiTietDonDatHang();
+                    detail.IDDDH = donDatHang.IDDDH;
+                    detail.IDMH = item.gioHang.IDMH;
+                    
+                    detail.SoluongMH = item._soLuongHang;
+
+                    tongtien += (int)(item.gioHang.DonGia * item._soLuongHang);
+                    _tongHang += item._soLuongHang;
+                    data.ChiTietDonDatHangs.Add(detail);
+                    data.SaveChanges();
                 }
+                    
                 donDatHang.TongSoluong = _tongHang;
                 donDatHang.TongTien = tongtien;
 
@@ -170,31 +166,14 @@ namespace WebBanDoDienTu.Controllers
             }
             catch
             {
+                DonDatHang donDatHang = (DonDatHang)Session["DonDatHang"];
+                data.DonDatHangs.Remove(donDatHang);
                 Session.Remove("DonDatHang");
                 Session.Remove("GioHang");
                 Session.Remove("SoLuongHangTrongGioHang");
                 return Content("<script language='javascript' type='text/javascript'>alert ('Vui lòng kiểm tra lại thông tin!');</script>");
 
-            }
-
-            /*GioHang gioHang = (GioHang)Session["GioHang"];
-
-
-            ViewBag.DonDatHang = donDatHang;
-            ViewBag.GioHang = gioHang;
-
-            ViewData["PhuongThucThanhToan"] = new SelectList(data.PhuongThucThanhToans.ToList(), "IDPT", "TenPT", donDatHang.PhuongThucThanhToan);
-
-            donDatHang.IDTrangThai = 1;
-
-            ViewBag.IDKH = new SelectList(data.KhachHangs, "IDKH", "TenKH", 1);
-            ViewBag.IDPT = new SelectList(data.PhuongThucThanhToans, "IDPT", "TenPT", donDatHang.IDPT);
-            ViewBag.IDTrangThai = new SelectList(data.TrangThais, "IDTrangThai", "TenTrangThai", donDatHang.IDTrangThai);
-            KhachHang kh = data.KhachHangs.Find(donDatHang.KhachHang.IDKH);
-            ViewBag.DiemTichLuyCuaKhachHang = kh.DiemTichLuyConLai;
-            ViewBag.HangCuaKhachHang = kh.LoaiKhachHang;
-            ViewBag.MaGiamGia = maGiamGia();
-            ViewBag.SoTienTuongUngMaGiamGia = soTienTuongUnMaGiamGia();*/
+            }         
         }
     }
 }

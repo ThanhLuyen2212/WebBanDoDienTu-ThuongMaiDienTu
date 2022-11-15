@@ -246,9 +246,7 @@ insert into PhuongThucThanhToan(TenPT) values(N'Thẻ nội địa, banking ')
 insert into PhuongThucThanhToan(TenPT) values(N'Ví momo')
 insert into PhuongThucThanhToan(TenPT) values(N'ship code – thanh toán khi nhận hàng')
 insert into PhuongThucThanhToan(TenPT) values(N'Thanh toán khi nhận tiền')
-DBCC CHECKIDENT('PhuongThucThanhToan', RESEED, 0)
-select * from PhuongThucThanhToan
-delete PhuongThucThanhToan
+
 -- tạo dữ liệu đơn hàng
 go
 insert into DonDatHang (IDKH,NgayMua, DiaChiNhanHang, TongSoluong, TongTien, TrangThaiThanhToan, NgayThanhToan, IDPT, IDTrangThai) values (2,'2022/04/25', 2, 2, 2, 1, '2022/08/10', 1, 1);
@@ -291,8 +289,8 @@ begin
 	set DiemTichLuy = 0, DiemTichLuyConLai = 0, LoaiKhachHang = N'Bạc'
 end
 
-select * from DonDatHang
-select * from TrangThai
+
+
 go
 -- Tạo một khách hàng mới
 -- tạm thời không dùng
@@ -676,6 +674,7 @@ update KhachHang set DiemTichLuyConLai = 30000 where IDKH = 63
 delete MatHang where idmh =3
 	delete ChiTietDonDatHang where IDDDH = 72
 	delete DonDatHang where IDDDH = 72
+delete DonDatHang where DiaChiNhanHang = '2'
 select * from DonDatHang
 update ChiTietDonDatHang set DanhGiaSanPham = null , BinhLuan = null
 
