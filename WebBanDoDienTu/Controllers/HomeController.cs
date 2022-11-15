@@ -33,6 +33,7 @@ namespace WebBanDoDienTu.Controllers
             }
             ViewBag.bestSeller = ListMatHang.Where(c => c.SoLuong > 0).Take(8);
             // kết thúc lấy 8 sản phẩm bán chạy nhất
+            // kết thúc lấy 8 sản phẩm bán chạy nhất
 
             return View(data.MatHangs.Where(c => c.SoLuong > 0).ToList());
         }
