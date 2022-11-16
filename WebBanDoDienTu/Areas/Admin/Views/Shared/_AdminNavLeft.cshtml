@@ -22,8 +22,6 @@
         </a>
     </div>
 
-
-
     <ul class="nav">
         <li class="nav-item profile">
             <div class="profile-desc">
@@ -63,10 +61,14 @@
                 </div>
             </div>
         </li>
+
+
+
+
         <li class="nav-item nav-category">
-            <span class="nav-link">Chức năng</span>
+            <span class="nav-link">Navigation</span>
         </li>
-        <li class="nav-item menu-items active">
+        <li class="nav-item menu-items">
             <a class="nav-link" href="~/Admin/AdminHome/Index">
                 <span class="menu-icon">
                     <i class="mdi mdi-speedometer"></i>
@@ -75,42 +77,31 @@
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link collapsed" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-icon">
                     <i class="mdi mdi-laptop"></i>
                 </span>
-                <span class="menu-title">Quản lý đơn đặt hàng</span>
+                <span class="menu-title">Đơn đặt hàng</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="ui-basic" style="">
+            <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="~/Admin/AdminDonDatHangs/Index">Tất cả đơn đặt hàng</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="~/Admin/AdminDonDatHangs/Index">Tất cả đơn hàng</a></li>
                     <li class="nav-item"> <a class="nav-link" href="~/Admin/AdminDonDatHangs/DuyetDonDatHang">Duyệt đơn đặt hàng</a></li>
                     <li class="nav-item"> <a class="nav-link" href="~/Admin/AdminDonDatHangs/PhanCongGiaoHang">Phân công giao hàng</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="~/Admin/AdminDonDatHangs/GiaoHangKhongThanhCong">Giao hàng không thành công</a></li>
                     <li class="nav-item"> <a class="nav-link" href="~/Admin/AdminDonDatHangs/GiaoHangThanhCong">Giao hàng thành công</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="~/Admin/AdminDonDatHangs/GiaoHangKhongThanhCong">Giao hàng thất bại</a></li>
                     <li class="nav-item"> <a class="nav-link" href="~/Admin/AdminDonDatHangs/DonHangCanXoa">Đơn hàng cần hủy</a></li>
                     <li class="nav-item"> <a class="nav-link" href="~/Admin/AdminDonDatHangs/TatCaDonHangDaHuy">Tất cả đơn hàng đã hủy</a></li>
-
                 </ul>
             </div>
         </li>
-
         <li class="nav-item menu-items">
             <a class="nav-link" href="~/Admin/AdminChiTietDonDatHangs/Index">
                 <span class="menu-icon">
-                    <i class="mdi mdi-contacts"></i>
-                </span>
-                <span class="menu-title">Chi tiết đơn đặt hàng</span>
-            </a>
-        </li>
-
-        <li class="nav-item menu-items">
-            <a class="nav-link" href="~/Admin/AdminKhachHangs/Index">
-                <span class="menu-icon">
                     <i class="mdi mdi-playlist-play"></i>
                 </span>
-                <span class="menu-title">Quản lý khách hàng</span>
+                <span class="menu-title">Chi tiêt đơn đặt hàng</span>
             </a>
         </li>
         <li class="nav-item menu-items">
@@ -118,22 +109,32 @@
                 <span class="menu-icon">
                     <i class="mdi mdi-table-large"></i>
                 </span>
-                <span class="menu-title">Quản lý mặt hàng</span>
+                <span class="menu-title">Mặt hàng</span>
             </a>
         </li>
+
         <li class="nav-item menu-items">
             <a class="nav-link" href="~/Admin/AdminLoaiMatHangs/Index">
                 <span class="menu-icon">
-                    <i class="mdi mdi-chart-bar"></i>
+                    <i class="mdi mdi-contacts"></i>
                 </span>
                 <span class="menu-title">Thể loại hàng</span>
             </a>
         </li>
 
         <li class="nav-item menu-items">
+            <a class="nav-link" href="~/Admin/AdminKhachHangs/Index">
+                <span class="menu-icon">
+                    <i class="mdi mdi-chart-bar"></i>
+                </span>
+                <span class="menu-title">Khách hàng</span>
+            </a>
+        </li>
+
+        <li class="nav-item menu-items">
             <a class="nav-link" href="~/Admin/AdminPhuongThucThanhToans/Index">
                 <span class="menu-icon">
-                    <i class="mdi mdi-file-document-box"></i>
+                    <i class="mdi mdi-chart-bar"></i>
                 </span>
                 <span class="menu-title">Phương thức thanh toán</span>
             </a>
@@ -141,11 +142,21 @@
         <li class="nav-item menu-items">
             <a class="nav-link" href="~/Admin/AdminTrangThais/Index">
                 <span class="menu-icon">
-                    <i class="mdi mdi-contacts"></i>
+                    <i class="mdi mdi-file-document-box"></i>
                 </span>
-                <span class="menu-title">Trạng thái hóa đơn</span>
+                <span class="menu-title">Quản lý đơn đặt hàng</span>
             </a>
         </li>
+
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="~/Admin/AdminNhanVien/Index">
+                <span class="menu-icon">
+                    <i class="mdi mdi-table-large"></i>
+                </span>
+                <span class="menu-title">Nhân viên</span>
+            </a>
+        </li>
+
         <li class="nav-item menu-items">
             <a class="nav-link" href="~/Admin/AdminsManager/Index">
                 <span class="menu-icon">
@@ -157,26 +168,26 @@
         <li class="nav-item menu-items">
             <a class="nav-link" href="~/Admin/AdminMaGiamGia/Index">
                 <span class="menu-icon">
-                    <i class="mdi mdi-contacts"></i>
+                    <i class="mdi mdi-playlist-play"></i>
                 </span>
                 <span class="menu-title">Mã giảm giá</span>
             </a>
         </li>
+
         <li class="nav-item menu-items">
-            <a class="nav-link collapsed" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                 <span class="menu-icon">
                     <i class="mdi mdi-security"></i>
                 </span>
                 <span class="menu-title">Thống kê</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="auth" style="">
+            <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="~/Admin/AdminThongKe/ThongKeDoanhThu">Doanh thu </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="~/Admin/AdminThongKe/ThongKeDoanhThuTheoKhachHang">Theo khách hàng</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="~/Admin/AdminThongKe/ThongKeDoanhThuTheoKhachHangLe">Theo khách hàng lẻ</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="~/Admin/AdminThongKe/ThongKeDoanhThuTheoSanPham"> Theo sản phẩm </a></li>
-
+                    <li class="nav-item"> <a class="nav-link" href="~/Admin/AdminThongKe/ThongKeDoanhThu"> Doanh thu </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="~/Admin/AdminThongKe/ThongKeDoanhThuTheoKhachHang"> Theo khách hàng </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="~/Admin/AdminThongKe/ThongKeDoanhThuTheoKhachHangLe"> Theo khách hàng lẻ </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="~/Admin/AdminThongKe/ThongKeDoanhThuTheoSanPham"> Theo sản phẩm </a></li>                   
                 </ul>
             </div>
         </li>

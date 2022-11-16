@@ -91,6 +91,7 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
         }
         public ActionResult ThongKeDoanhThu()
         {
+            ViewBag.DonDatHangDangChoDuyet = data.DonDatHangs.Where(c => c.IDTrangThai == 1).ToList();
             return View();
         }
 
@@ -98,6 +99,10 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ThongKeDoanhThu(FormCollection form)
         {
+            if (Session["Admin"] == null)
+            {
+                return RedirectToAction("Index", "AdminLogin");
+            }
             /*if (form["NgayBatDau"] == null || form["NgayKetThuc"] == null || form["PhuongThucTT"] == null)
                 return View();*/
             string NgayBatDau1 = form["NgayBatDau"];
@@ -118,10 +123,15 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
                 TongMatHang += item.TongSoluong.Value;
                 TongThuNhap += item.TongTien.Value;
             }
+            ViewBag.NgayBatDau = NgayBatDau1;
+
+            ViewBag.NgayKetThuc = NgayKetThuc1;
 
             ViewBag.TongMatHang = TongMatHang;
-
+            
             ViewBag.TongThuNhap = TongThuNhap;
+
+            
 
             return View();
         }
