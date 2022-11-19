@@ -304,5 +304,15 @@ namespace WebBanDoDienTu.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_XoaDonDatHangChuaDuyet", iDDDHParameter);
         }
+    
+        public virtual ObjectResult<MatHang> sp_8SanPhamBanChayNhat()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MatHang>("sp_8SanPhamBanChayNhat");
+        }
+    
+        public virtual ObjectResult<MatHang> sp_8SanPhamBanChayNhat(MergeOption mergeOption)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MatHang>("sp_8SanPhamBanChayNhat", mergeOption);
+        }
     }
 }

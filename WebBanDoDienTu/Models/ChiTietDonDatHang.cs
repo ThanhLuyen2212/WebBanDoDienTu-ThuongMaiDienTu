@@ -11,21 +11,15 @@ namespace WebBanDoDienTu.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class ChiTietDonDatHang
     {
         public int IDChiTietDDH { get; set; }
-        
         public Nullable<int> IDDDH { get; set; }
-        
         public Nullable<int> IDMH { get; set; }
-       
         public Nullable<double> DonGia { get; set; }
-
         public Nullable<int> DanhGiaSanPham { get; set; }
         public string BinhLuan { get; set; }
-       
         public Nullable<int> SoluongMH { get; set; }
     
         public virtual DonDatHang DonDatHang { get; set; }

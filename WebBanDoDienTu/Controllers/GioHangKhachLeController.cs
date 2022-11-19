@@ -176,6 +176,11 @@ namespace WebBanDoDienTu.Controllers
                     {
                         return RedirectToAction("Index", "Home");
                     }
+                    MatHang mh = data.MatHangs.Find(item.gioHang.IDMH);
+                    if (item._soLuongHang > mh.SoLuong)
+                    {
+                        return Content("Số lượng mặt hàng " + mh.TenMH + " không đủ!");
+                    }
 
                 }
                 Session["GioHang"] = gio;

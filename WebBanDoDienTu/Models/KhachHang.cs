@@ -11,8 +11,7 @@ namespace WebBanDoDienTu.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class KhachHang
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,24 +21,13 @@ namespace WebBanDoDienTu.Models
         }
     
         public int IDKH { get; set; }
-        [Required]
         public string TenKH { get; set; }
-        [Required]
-        [DataType(DataType.PhoneNumber)]
         public string SDT { get; set; }
-        [Required]
         public string DiaChiGiaoHang1 { get; set; }
-        [Required]
         public string DiaChiGiaoHang2 { get; set; }
-        [Required]
-        [EmailAddress]
         public string Email { get; set; }
-        [Required]
-        [DataType(DataType.Date)]
         public Nullable<System.DateTime> NgaySinh { get; set; }
-        [Required]
         public string UserName { get; set; }
-        [Required]
         public string Password { get; set; }
         public Nullable<int> DiemTichLuy { get; set; }
         public Nullable<int> DiemTichLuyConLai { get; set; }

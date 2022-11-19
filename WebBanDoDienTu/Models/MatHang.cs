@@ -11,10 +11,8 @@ namespace WebBanDoDienTu.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Web;
-
     public partial class MatHang
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,28 +22,15 @@ namespace WebBanDoDienTu.Models
         }
     
         public int IDMH { get; set; }
-        [Required]
         public string TenMH { get; set; }
-        [Required]
         public Nullable<int> IDLoaiMH { get; set; }
-        [Required]
         public string MoTa { get; set; }
-        [Required]
-        [Range(1,int.MaxValue)]
         public Nullable<int> DonGia { get; set; }
-        [DataType(DataType.Date)]
-        [Required]
         public Nullable<System.DateTime> NgayNhapHang { get; set; }
-        [Required]
-        [Range(1,int.MaxValue)]
         public Nullable<int> SoLuong { get; set; }
-       
         public byte[] HinhAnh1 { get; set; }
-       
         public byte[] HinhAnh2 { get; set; }
-       
         public byte[] HinhAnh3 { get; set; }
-       
         public byte[] HinhAnh4 { get; set; }
         public string MoTaChiTiet { get; set; }
     

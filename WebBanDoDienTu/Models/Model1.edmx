@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WebBanDoDienTuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WebBanDoDienTuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="IDAdmin" />
@@ -208,6 +208,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="sp_8SanPhamBanChayNhat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_DanhGiaMatHangDaMua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idMH" Type="int" Mode="In" />
           <Parameter Name="SoSaoDanhGia" Type="int" Mode="In" />
@@ -305,8 +306,7 @@
             <End Role="MatHang" EntitySet="MatHang" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WebBanDoDienTuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -615,14 +615,15 @@
             <Parameter Name="NgayKetThuc" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="sp_TimKiemSanPham" EntitySet="MatHangs" ReturnType="Collection(WebBanDoDienTuModel.MatHang)">
-            <Parameter Name="KyTuTimKiem" Mode="In" Type="String" />
+          <Parameter Name="KyTuTimKiem" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_XoaDonDatHangADMIN">
-            <Parameter Name="IDDDH" Mode="In" Type="Int32" />
+          <Parameter Name="IDDDH" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_XoaDonDatHangChuaDuyet">
-            <Parameter Name="IDDDH" Mode="In" Type="Int32" />
+          <Parameter Name="IDDDH" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="sp_8SanPhamBanChayNhat" EntitySet="MatHangs" ReturnType="Collection(WebBanDoDienTuModel.MatHang)" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -778,6 +779,8 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_XoaDonDatHangADMIN" FunctionName="WebBanDoDienTuModel.Store.sp_XoaDonDatHangADMIN" />
           <FunctionImportMapping FunctionImportName="sp_XoaDonDatHangChuaDuyet" FunctionName="WebBanDoDienTuModel.Store.sp_XoaDonDatHangChuaDuyet" />
+          <FunctionImportMapping FunctionImportName="sp_8SanPhamBanChayNhat" FunctionName="WebBanDoDienTuModel.Store.sp_8SanPhamBanChayNhat">
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

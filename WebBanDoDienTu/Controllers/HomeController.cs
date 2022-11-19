@@ -18,7 +18,7 @@ namespace WebBanDoDienTu.Controllers
             ViewBag.newProduct = data.MatHangs.Where(c => c.SoLuong > 0).Take(8).OrderByDescending(x => x.NgayNhapHang).ToList();
 
             // lấy danh sách mặt hàng có nhiều hóa đơn nhất
-            List<BestSeller> bestSellerList = new List<BestSeller>();
+            /*List<BestSeller> bestSellerList = new List<BestSeller>();
             foreach (MatHang item in data.MatHangs)
             {
                 int soluong = data.ChiTietDonDatHangs.Count(c => c.IDMH == item.IDMH);
@@ -31,11 +31,20 @@ namespace WebBanDoDienTu.Controllers
             {
                 ListMatHang.Add(item.matHang);
             }
-            ViewBag.bestSeller = ListMatHang.Where(c => c.SoLuong > 0).Take(8);
+            ViewBag.bestSeller = ListMatHang.Take(8);*/
             // kết thúc lấy 8 sản phẩm bán chạy nhất
             // kết thúc lấy 8 sản phẩm bán chạy nhất
 
+            List<MatHang> listMatHangBanChay = data.sp_8SanPhamBanChayNhat().ToList();
+            ViewBag.bestSeller = listMatHangBanChay;
+
             return View(data.MatHangs.Where(c => c.SoLuong > 0).ToList());
+        }
+
+        public ActionResult Index1()
+        {
+            return View();
+            // lấy danh sách mặt hàng có nhiều hóa đơn nhất
         }
     }
 
@@ -50,5 +59,6 @@ namespace WebBanDoDienTu.Controllers
             this.soluongmua = soluongmua;
         }
     }
-    // lấy danh sách mặt hàng có nhiều hóa đơn nhất
 }
+
+   

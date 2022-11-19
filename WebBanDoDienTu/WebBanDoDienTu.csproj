@@ -1385,6 +1385,8 @@
     <Content Include="Areas\Admin\Views\AdminMatHangs\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminMatHangs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminMatHangs\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\thanhluyen221200-001-site1 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\thanhluyen221200-001-site1 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1407,8 +1409,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
@@ -1427,6 +1427,7 @@
     <Content Include="Views\ThongTinCaNhan\CapNhatThongTinCaNhan.cshtml" />
     <Content Include="Views\XacNhanDonHang\XacNhan.cshtml" />
     <Content Include="Views\XacNhanDonHangKhachLe\XacNhan.cshtml" />
+    <Content Include="Views\Home\Index1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

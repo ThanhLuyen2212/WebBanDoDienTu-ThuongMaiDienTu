@@ -11,16 +11,13 @@ namespace WebBanDoDienTu.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class MaGiamGia
     {
         public string IDMaGiamGia { get; set; }
-        [Required]
         public string TenMaGiamGia { get; set; }
         public Nullable<System.DateTime> NgayBatDauGiamGia { get; set; }
         public Nullable<System.DateTime> NgayKetThucGiamGia { get; set; }
-        [Required]
         public Nullable<int> SoTienGiam { get; set; }
     }
 }

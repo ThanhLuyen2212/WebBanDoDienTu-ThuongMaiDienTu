@@ -11,8 +11,7 @@ namespace WebBanDoDienTu.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class NhanVien
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,15 +21,10 @@ namespace WebBanDoDienTu.Models
         }
     
         public int IDNhanVien { get; set; }
-        [Required]
         public string TenNhanVien { get; set; }
-        [Required]        
         public string SDT { get; set; }
-        [EmailAddress]
         public string Email { get; set; }
-        [Required]
         public string DiaChi { get; set; }
-        [Required]
         public string ChucVu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

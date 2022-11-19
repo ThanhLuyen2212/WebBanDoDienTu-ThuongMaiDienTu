@@ -6,8 +6,6 @@
     List<MatHang> newProduct = ViewBag.newProduct;
 }
 
-
-
 <!-- Banner Section Begin -->
 <section class="banner set-bg" style="background-image: url(@Url.Content("~/Images/banner-2.png"))">
     <div class="container">
@@ -55,8 +53,8 @@
                                     var base64 = Convert.ToBase64String(item.HinhAnh1);
                                     var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
                                 }
-                                <img src='@imgSrc' width="262px" height="262px" alt="Alternate Text" />
-
+                                <img src='@imgSrc' width="262px" height="360px" alt="Alternate Text" />
+                                
                             </div>
                             <div class="product__item__text">
                                 <h6><a href="#">@item.TenMH</a></h6>
@@ -155,10 +153,9 @@
                                     var base64 = Convert.ToBase64String(item.HinhAnh1);
                                     var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
                                 }
-                                <img src='@imgSrc' width="262px" height="262px" alt="Alternate Text" />
+                                <img src='@imgSrc' width="262px" height="360px" alt="Alternate Text" />
                                 @*<img src="@Url.Content(item.HinhAnh1)" width="262px" height="360px" alt="Alternate Text" />*@
                             </div>
-                            @if (item.SoLuong <= 0) { }
                             <div class="product__item__text">
                                 <h6><a href="#">@item.TenMH</a></h6>
                                 <div class="product__price">@item.DonGia VND</div>

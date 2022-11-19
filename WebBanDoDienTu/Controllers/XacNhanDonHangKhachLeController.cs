@@ -53,8 +53,8 @@ namespace WebBanDoDienTu.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult XacNhanDonHang()
         {
-            try
-            {
+            /*try
+            {*/
                 if (Session["GioHang"] == null)
                 {
                     return RedirectToAction("Index", "Login");
@@ -122,7 +122,7 @@ namespace WebBanDoDienTu.Controllers
                 Session.Remove("GioHang");
                 Session.Remove("SoLuongHangTrongGioHang");
                 return RedirectToAction("MuaThanhCong", "ThongBao");
-            }
+            /*}
             catch
             {
                 Session.Remove("DonDatHang");
@@ -130,7 +130,7 @@ namespace WebBanDoDienTu.Controllers
                 Session.Remove("SoLuongHangTrongGioHang");
                 return Content("<script language='javascript' type='text/javascript'>alert ('Vui lòng đặt hàng lại từ đầu!');</script>");
 
-            }
+            }*/
 
         }
     }
