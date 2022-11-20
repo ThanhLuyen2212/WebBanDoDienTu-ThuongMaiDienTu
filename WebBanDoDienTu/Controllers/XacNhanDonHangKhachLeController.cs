@@ -117,8 +117,7 @@ namespace WebBanDoDienTu.Controllers
                 donDatHang.TongSoluong = _tongHang;
                 donDatHang.TongTien = tongtien;
 
-                data.SaveChanges();
-                Session.Remove("DonDatHang");
+                data.SaveChanges();                
                 Session.Remove("GioHang");
                 Session.Remove("SoLuongHangTrongGioHang");
                 return RedirectToAction("MuaThanhCong", "ThongBao");

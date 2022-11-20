@@ -101,7 +101,7 @@ namespace WebBanDoDienTu.Controllers
                 donDatHang.NgayMua = DateTime.Now;
                 data.DonDatHangs.Add(donDatHang);
                 data.SaveChanges();
-                Session["DonDatHang"] = donDatHang;
+                
 
                 int tongtien = 0;
                 int _tongHang = 0;
@@ -147,19 +147,21 @@ namespace WebBanDoDienTu.Controllers
                 if (checkboxDiemTichLuy == "on")
                 {
                     var diemdung = Request.Form.Get("SoDiemDung");
-                    donDatHang.TongTien = donDatHang.TongTien - int.Parse(diemdung.ToString());
-                    if (donDatHang.TongTien < 0) donDatHang.TongTien = 0;
-                    data.sp_GiamDiemKhachHangKhiMuaHangSuDungDiem(donDatHang.IDKH, int.Parse(diemdung.ToString()));
+                int intDienDung = int.Parse(diemdung.ToString());
+
+                    donDatHang.TongTien = donDatHang.TongTien - intDienDung;
+                    if (donDatHang.TongTien < 0) donDatHang.TongTien = 0;   
+                   
+                    data.sp_GiamDiemKhachHangKhiMuaHangSuDungDiem(donDatHang.IDKH, intDienDung);
                 }
 
 
                 int diem_tang = (int)donDatHang.TongTien / 10000;
                 data.sp_ThemDiemKhachHangKhiMuaHang(donDatHang.IDKH, diem_tang);
 
-                /*data.Entry(donDatHang).State = EntityState.Modified;       */
-
-                data.SaveChanges();
-                Session.Remove("DonDatHang");
+            /*data.Entry(donDatHang).State = EntityState.Modified;       */
+            Session["KhachHang"] = data.KhachHangs.FirstOrDefault(x => x.IDKH == khachHang.IDKH);
+                data.SaveChanges();                
                 Session.Remove("GioHang");
                 Session.Remove("SoLuongHangTrongGioHang");
                 return RedirectToAction("MuaThanhCong", "ThongBao");

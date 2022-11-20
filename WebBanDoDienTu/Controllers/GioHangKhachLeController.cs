@@ -179,6 +179,7 @@ namespace WebBanDoDienTu.Controllers
                     MatHang mh = data.MatHangs.Find(item.gioHang.IDMH);
                     if (item._soLuongHang > mh.SoLuong)
                     {
+                        gio.Remove(item.gioHang.IDMH);
                         return Content("Số lượng mặt hàng " + mh.TenMH + " không đủ!");
                     }
 

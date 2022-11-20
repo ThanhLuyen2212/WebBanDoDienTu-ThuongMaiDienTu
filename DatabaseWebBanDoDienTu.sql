@@ -247,21 +247,6 @@ insert into PhuongThucThanhToan(TenPT) values(N'Ví momo')
 insert into PhuongThucThanhToan(TenPT) values(N'ship code – thanh toán khi nhận hàng')
 insert into PhuongThucThanhToan(TenPT) values(N'Thanh toán khi nhận tiền')
 
--- tạo dữ liệu đơn hàng
-go
-insert into DonDatHang (IDKH,NgayMua, DiaChiNhanHang, TongSoluong, TongTien, TrangThaiThanhToan, NgayThanhToan, IDPT, IDTrangThai) values (2,'2022/04/25', 2, 2, 2, 1, '2022/08/10', 1, 1);
-insert into DonDatHang (IDKH,NgayMua, DiaChiNhanHang, TongSoluong, TongTien, TrangThaiThanhToan, NgayThanhToan, IDPT, IDTrangThai) values (2,'2021/11/08', 2, 2, 2, 1, '2022/02/04', 1, 1);
-insert into DonDatHang (IDKH,NgayMua, DiaChiNhanHang, TongSoluong, TongTien, TrangThaiThanhToan, NgayThanhToan, IDPT, IDTrangThai) values (2,'2022/10/15', 2, 2, 2, 1, '2022/04/29', 1, 1);
-insert into DonDatHang (IDKH,NgayMua, DiaChiNhanHang, TongSoluong, TongTien, TrangThaiThanhToan, NgayThanhToan, IDPT, IDTrangThai) values (2,'2022/10/20', 2, 2, 2, 1, '2022/02/15', 1, 1);
-insert into DonDatHang (IDKH,NgayMua, DiaChiNhanHang, TongSoluong, TongTien, TrangThaiThanhToan, NgayThanhToan, IDPT, IDTrangThai) values (2,'2022/02/18', 2, 2, 2, 1, '2021/11/10', 1, 1);
-insert into DonDatHang (IDKH,NgayMua, DiaChiNhanHang, TongSoluong, TongTien, TrangThaiThanhToan, NgayThanhToan, IDPT, IDTrangThai) values (2,'2022/09/17', 2, 2, 2, 1, '2022/04/10', 1, 1);
-insert into DonDatHang (IDKH,NgayMua, DiaChiNhanHang, TongSoluong, TongTien, TrangThaiThanhToan, NgayThanhToan, IDPT, IDTrangThai) values (2,'2022/07/16', 2, 2, 2, 1, '2021/12/30', 1, 1);
-insert into DonDatHang (IDKH,NgayMua, DiaChiNhanHang, TongSoluong, TongTien, TrangThaiThanhToan, NgayThanhToan, IDPT, IDTrangThai) values (2,'2022/10/13', 2, 2, 2, 1, '2022/08/11', 1, 1);
-insert into DonDatHang (IDKH,NgayMua, DiaChiNhanHang, TongSoluong, TongTien, TrangThaiThanhToan, NgayThanhToan, IDPT, IDTrangThai) values (2,'2022/04/08', 2, 2, 2, 1, '2022/10/21', 1, 1);
-insert into DonDatHang (IDKH,NgayMua, DiaChiNhanHang, TongSoluong, TongTien, TrangThaiThanhToan, NgayThanhToan, IDPT, IDTrangThai) values (2,'2022/06/10', 2, 2, 2, 1, '2022/06/10', 1, 1);
-insert into DonDatHang (IDKH,NgayMua, DiaChiNhanHang, TongSoluong, TongTien, TrangThaiThanhToan, NgayThanhToan, IDPT, IDTrangThai) values (2,'2022/07/28', 2, 2, 2, 1, '2022/01/11', 1, 1);
-insert into DonDatHang (IDKH,NgayMua, DiaChiNhanHang, TongSoluong, TongTien, TrangThaiThanhToan, NgayThanhToan, IDPT, IDTrangThai) values (3,'2022/05/23', 2, 2, 2, 1, '2022/06/21', 1, 1);
-
  ---------------------------------------------------------------
 ----------------- KHU VUC DANH CHO MẶT HÀNG --------------------
 ----------------------------------------------------------------
@@ -344,28 +329,53 @@ as
 begin 
 	if not exists (select * from KhachHang where IDKH = @idkh)
 	begin 
-		rollback
+		raiserror(N'Không thể tìm thấy khách hàng này',16,1)
 		return
 	end
 	if(@diemdadung < 0 or @diemdadung > (select DiemTichLuyConLai from KhachHang where IDKH = @idkh))
-	rollback
-	update KhachHang set DiemTichLuyConLai = DiemTichLuyConLai - @diemdadung where IDKH = @idkh
+	begin
+		raiserror(N'Điểm tích lũy đang dùng không thế bé hơn 0 và lớn hơn điển tích lũy còn lại của khách hàng đó',16,1)
+		return
+	end
+	SET XACT_ABORT ON
+	begin tran
+	begin try
+		update KhachHang set DiemTichLuyConLai = DiemTichLuyConLai - @diemdadung where IDKH = @idkh
+		commit
+	end try
+	begin catch 
+	declare @ErrMsg varchar(max) 
+		rollback 
+		select @ErrMsg = 'Lỗi ' + ERROR_MESSAGE()
+		raiserror (@ErrMSG, 16,1)
+	end catch 
 end
 
 
 
 --Thêm điểm khách hàng khi mua hàng 
 go
-create proc sp_ThemDiemKhachHangKhiMuaHang @idkh int, @DiemThem int
+alter proc sp_ThemDiemKhachHangKhiMuaHang @idkh int, @DiemThem int
 as
 begin 
 	if not exists (select * from KhachHang where IDKH = @idkh)
 	begin 
-		rollback
-		return
+		raiserror ('Không tin thầy khách hàng này',16,1)
+		return;
 	end	
-	update KhachHang set DiemTichLuyConLai = DiemTichLuyConLai + @DiemThem where IDKH = @idkh
-	update KhachHang set DiemTichLuy = DiemTichLuy + @DiemThem where IDKH = @idkh
+	SET XACT_ABORT ON
+	begin tran
+	begin try
+		update KhachHang set DiemTichLuyConLai = DiemTichLuyConLai + @DiemThem where IDKH = @idkh
+		update KhachHang set DiemTichLuy = DiemTichLuy + @DiemThem where IDKH = @idkh
+		commit
+	end try
+	begin catch 
+		declare @ErrMsg varchar(max) 
+		rollback 
+		select @ErrMsg = 'Lỗi ' + ERROR_MESSAGE()
+		raiserror (@ErrMSG, 16,1)
+	end catch
 end
 ---------------------------------------------------------------
 ----------KẾT THÚC KHU VUC DANH CHO KHÁCH HÀNG ----------------
@@ -682,3 +692,6 @@ end
 ---------------------------------------------------------------
 -------------- KẾT THÚC KHU VUC DÀNH CHO THỐNG KÊ -------------
 ---------------------------------------------------------------
+select * from ChiTietDonDatHang
+delete ChiTietDonDatHang
+delete DonDatHang
