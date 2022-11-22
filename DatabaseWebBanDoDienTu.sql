@@ -554,6 +554,7 @@ begin
 	end
 	close mathangCursor
 	deallocate mathangCursor 
+
 	select top(8)* from MatHang where IDMH in (select * from @ListIDMH)
 end
 
