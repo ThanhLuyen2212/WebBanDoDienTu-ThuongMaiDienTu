@@ -65,7 +65,7 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDKH,TenKH,SDT,DiaChiGiaoHang1,DiaChiGiaoHang2,Email,NgaySinh,UserName,Password,DiemTichLuy,DiemTichLuyConLai,LoaiKhachHang")] KhachHang khachHang)
+        public ActionResult Create( KhachHang khachHang)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDKH,TenKH,SDT,DiaChiGiaoHang1,DiaChiGiaoHang2,Email,NgaySinh,UserName,Password,DiemTichLuy,DiemTichLuyConLai,LoaiKhachHang")] KhachHang khachHang)
+        public ActionResult Edit( KhachHang khachHang)
         {
             if (ModelState.IsValid)
             {

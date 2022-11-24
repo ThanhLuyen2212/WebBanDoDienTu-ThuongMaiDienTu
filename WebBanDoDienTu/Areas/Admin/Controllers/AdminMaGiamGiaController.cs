@@ -46,7 +46,7 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDMaGiamGia,TenMaGiamGia,NgayBatDauGiamGia,NgayKetThucGiamGia,SoTienGiam")] MaGiamGia maGiamGia)
+        public ActionResult Create( MaGiamGia maGiamGia)
         {
             if (ModelState.IsValid)
             {
