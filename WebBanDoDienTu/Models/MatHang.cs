@@ -11,6 +11,7 @@ namespace WebBanDoDienTu.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Web;
     public partial class MatHang
@@ -22,11 +23,16 @@ namespace WebBanDoDienTu.Models
         }
     
         public int IDMH { get; set; }
+        [Required]
         public string TenMH { get; set; }
+        [Required]
         public Nullable<int> IDLoaiMH { get; set; }
         public string MoTa { get; set; }
+        [Range(0,int.MaxValue)]
         public Nullable<int> DonGia { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> NgayNhapHang { get; set; }
+        [Range(0,int.MaxValue)]
         public Nullable<int> SoLuong { get; set; }
         public byte[] HinhAnh1 { get; set; }
         public byte[] HinhAnh2 { get; set; }

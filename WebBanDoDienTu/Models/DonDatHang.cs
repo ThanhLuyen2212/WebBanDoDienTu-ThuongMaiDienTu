@@ -11,7 +11,8 @@ namespace WebBanDoDienTu.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class DonDatHang
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,9 +22,12 @@ namespace WebBanDoDienTu.Models
         }
     
         public int IDDDH { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> NgayMua { get; set; }
         public string DiaChiNhanHang { get; set; }
+        [Range(0,int.MaxValue)]
         public Nullable<int> TongSoluong { get; set; }
+        [Range(0, int.MaxValue)]
         public Nullable<int> TongTien { get; set; }
         public Nullable<int> IDKH { get; set; }
         public Nullable<bool> TrangThaiThanhToan { get; set; }
@@ -33,6 +37,7 @@ namespace WebBanDoDienTu.Models
         public Nullable<int> IDNhanVien { get; set; }
         public string GhiChu { get; set; }
         public string TenKHKhongAccount { get; set; }
+        [Phone]
         public string DienThoaiKhongAccount { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

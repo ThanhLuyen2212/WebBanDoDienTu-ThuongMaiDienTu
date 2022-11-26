@@ -104,8 +104,11 @@
 
                                                 var tiengiam1 = 0;
                                                 var tiengiam2 = 0;
+                                                var tienchinh = @gioHang.TongTien();
                                                 @*áp dụng điểm tích lũy*@
                                                 function update_money() {
+                                                    tiengiam1 = 0;
+                                                    document.getElementById("giatien").innerHTML = tienchinh - tiengiam1 - tiengiam2 + " VND";
                                                     document.getElementById("thongbao").innerHTML = "";
                                                     var x = document.getElementById("diem");
                                                     var diem = x.value;
@@ -117,12 +120,12 @@
                                                         document.getElementById("thongbao").innerHTML = "Giá trị nhập vào không hợp lệ";
                                                         return;
                                                     }
-                                                    if (diem > @gioHang.TongTien() - tiengiam2) {
+                                                    if (diem > tienchinh - tiengiam2) {
                                                         document.getElementById("thongbao").innerHTML = "Giá trị nhập vào không hợp lệ";
                                                         return;
                                                     }
                                                     tiengiam1 = diem;
-                                                    var temp1 = @gioHang.TongTien() - tiengiam1 - tiengiam2;
+                                                    var temp1 = tienchinh - tiengiam1 - tiengiam2;
                                                     if (temp1 < 0) {
                                                         document.getElementById("giatien").innerHTML = "0 VND";
                                                     } else {
@@ -135,6 +138,9 @@
                                                 @*áp dụng mã giảm giá*@
 
                                                 function checkMa() {
+                                                    tiengiam2 = 0;
+                                                    document.getElementById("giatien").innerHTML = tienchinh - tiengiam1 - tiengiam2 + " VND";
+
                                                     var temp = document.getElementById("magiamgia").value
 
                                                     var ma = @Html.Raw(Json.Encode(ViewBag.MaGiamGia));
@@ -150,7 +156,7 @@
                                                     }
                                                     if (check == true) {
                                                         document.getElementById("ketqua").innerHTML = "Mã giảm giá hợp lệ";
-                                                        var temp2 = @gioHang.TongTien() - tiengiam2 - tiengiam1;
+                                                        var temp2 = tienchinh - tiengiam2 - tiengiam1;
                                                         if (temp2 < 0)
                                                             document.getElementById("giatien").innerHTML = "0 VND";
                                                         else

@@ -14,7 +14,7 @@ namespace WebBanDoDienTu.Controllers
         public List<string> maGiamGia()
         {
             List<string> maGiamGiaList = new List<string>();
-            List<MaGiamGia> temp = data.MaGiamGias.ToList();
+            List<MaGiamGia> temp = data.MaGiamGias.Where(c => c.NgayBatDauGiamGia < DateTime.Today).Where(c => c.NgayKetThucGiamGia > DateTime.Today).ToList();
             foreach (MaGiamGia item in temp)
             {
                 maGiamGiaList.Add(item.IDMaGiamGia.ToString());
