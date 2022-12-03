@@ -355,7 +355,7 @@ end
 
 --Thêm điểm khách hàng khi mua hàng 
 go
-alter proc sp_ThemDiemKhachHangKhiMuaHang @idkh int, @DiemThem int
+create proc sp_ThemDiemKhachHangKhiMuaHang @idkh int, @DiemThem int
 as
 begin 
 	if not exists (select * from KhachHang where IDKH = @idkh)
@@ -504,7 +504,7 @@ as
 go
 --khi thêm đơn đặt hàng thì trừ số lượng của mặt hàng đó
 -- đã đúng
-alter trigger tg_TruKhiMuaDonHang 
+create trigger tg_TruKhiMuaDonHang 
 on ChiTietDonDatHang after insert as
 begin
 	declare @IDMH int

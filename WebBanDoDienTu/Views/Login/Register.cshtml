@@ -21,7 +21,14 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="~/Areas/Admin/Assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="~/Areas/Admin/Assets/images/favicon.png" />
+    <title>Shop online (KhachHang)</title>
+    <!-- Css Styles -->
+
+    <link rel="shortcut icon" href="~/Images/desktop-computer.png" />
+
+
+
+
 </head>
 <body>
 
@@ -102,11 +109,20 @@
                                             <p class="text-danger">@ViewBag.ErrorInfor</p>
                                         }
 
-
                                         <div class="text-center" style="margin-top:30px; justify-content: center; display: flex">
                                             <input type="submit" class="btn btn-primary btn-block enter-btn" value="Register" style="height: 50px; width: 200px" />
                                         </div>
                                         <p style="margin-top:20px"> Bạn đã có tài khoản??? <a href="@Url.Action("Index","Login")">Login</a> </p>
+
+                                        @if (ViewBag.thongbaothanhcong != null)
+                                        {
+                                        <div class="alert">
+                                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                            This is an alert box.
+                                        </div>
+                                        }
+
+
 
                                     </form>
                                 </div>
@@ -119,13 +135,6 @@
                 <!-- page-body-wrapper ends -->
             </div>
         }
-
-
-
-
-
-
-
 
         <!-- container-scroller -->
         <!-- plugins:js -->
@@ -144,4 +153,3 @@
     </div>
 </body>
 </html>
-

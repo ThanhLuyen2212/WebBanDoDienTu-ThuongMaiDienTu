@@ -45,15 +45,16 @@ namespace WebBanDoDienTu.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(KhachHang khachHang)
-        {
+        {                      
             if (ModelState.IsValid)
             {
+                ViewBag.thongbaothanhcong("Bạn đã đăng ký thành công");
                 data.KhachHangs.Add(khachHang);
-                data.SaveChanges();
-                return RedirectToAction("Index");
+                data.SaveChanges();                
+                return View();
             }
-
-            return View(khachHang);
+            ViewBag.ErrorInfo("Vui lòng nhập đúng thông tin");
+            return View();
         }
 
         public ActionResult Logout()
