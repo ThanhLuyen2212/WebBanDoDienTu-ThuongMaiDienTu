@@ -52,7 +52,7 @@ namespace WebBanDoDienTu.Controllers
                 data.SaveChanges();                
                 return RedirectToAction("Index", "Login");
             }
-            ViewBag.ErrorInfo("Vui lòng nhập đúng thông tin");
+            ViewBag.ErrorInfo = "Vui lòng nhập đúng thông tin";
             return View();
         }
 
