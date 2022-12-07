@@ -694,5 +694,8 @@ end
 -------------- KẾT THÚC KHU VUC DÀNH CHO THỐNG KÊ -------------
 ---------------------------------------------------------------
 select * from ChiTietDonDatHang
+select * from DonDatHang
 delete ChiTietDonDatHang
 delete DonDatHang
+select * from KhachHang
+delete KhachHang where IDKH = 41

@@ -27,8 +27,9 @@ namespace WebBanDoDienTu.Models
         [Required]
         [DataType(DataType.PhoneNumber)]
         public string SDT { get; set; }
+        [Required]
         public string DiaChiGiaoHang1 { get; set; }
-        public string DiaChiGiaoHang2 { get; set; }
+        public string DiaChiGiaoHang2 { get; set; }        
         [EmailAddress]
         public string Email { get; set; }
         [DataType(DataType.Date)]

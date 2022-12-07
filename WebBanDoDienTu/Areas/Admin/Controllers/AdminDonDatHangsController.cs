@@ -38,7 +38,9 @@ namespace WebBanDoDienTu.Areas.Admin.Controllers
             }
             if (SDT != null && SDT != "")
             {
-                return View(db.DonDatHangs.Where(s => s.KhachHang.SDT == SDT).Include(s => s.DienThoaiKhongAccount == SDT).ToList());
+                var donDatHangs = db.DonDatHangs.Where(s => s.DienThoaiKhongAccount == SDT).ToList();
+                var donDatHangs1 = db.DonDatHangs.Where(s => s.KhachHang.SDT == SDT).ToList();
+                return View(donDatHangs.Concat(donDatHangs1));
             }
             else if (NgayBatDau != null && NgayKetThuc != null)
             {

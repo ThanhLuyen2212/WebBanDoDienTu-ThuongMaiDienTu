@@ -47,11 +47,10 @@ namespace WebBanDoDienTu.Controllers
         public ActionResult Register(KhachHang khachHang)
         {                      
             if (ModelState.IsValid)
-            {
-                ViewBag.thongbaothanhcong("Bạn đã đăng ký thành công");
+            {                
                 data.KhachHangs.Add(khachHang);
                 data.SaveChanges();                
-                return View();
+                return RedirectToAction("Index", "Login");
             }
             ViewBag.ErrorInfo("Vui lòng nhập đúng thông tin");
             return View();

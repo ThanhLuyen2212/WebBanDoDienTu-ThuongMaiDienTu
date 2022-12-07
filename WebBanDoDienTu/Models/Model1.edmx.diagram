@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="88555b37008f4c57b2ee68716a2b8686" Name="Diagram1" ZoomLevel="69">
+      <Diagram DiagramId="88555b37008f4c57b2ee68716a2b8686" Name="Diagram1" ZoomLevel="65">
         <EntityTypeShape EntityType="WebBanDoDienTuModel.Admin" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WebBanDoDienTuModel.ChiTietDonDatHang" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="WebBanDoDienTuModel.DonDatHang" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
