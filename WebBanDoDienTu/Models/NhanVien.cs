@@ -26,11 +26,12 @@ namespace WebBanDoDienTu.Models
         public string TenNhanVien { get; set; }
         [Required]
         [DataType(DataType.PhoneNumber)]
+        [Phone]
         public string SDT { get; set; }
         [Required]
         [EmailAddress]
         public string Email { get; set; }
-        [Required]        
+        [Required] 
         public string DiaChi { get; set; }
         [Required]
         public string ChucVu { get; set; }

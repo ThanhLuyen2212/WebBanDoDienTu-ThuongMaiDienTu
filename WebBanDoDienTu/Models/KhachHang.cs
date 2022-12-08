@@ -25,19 +25,20 @@ namespace WebBanDoDienTu.Models
         [Required]
         public string TenKH { get; set; }
         [Required]
-        [DataType(DataType.PhoneNumber)]
+        [Phone]
         public string SDT { get; set; }
         [Required]
         public string DiaChiGiaoHang1 { get; set; }
         public string DiaChiGiaoHang2 { get; set; }        
         [EmailAddress]
         public string Email { get; set; }
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date)]        
         public Nullable<System.DateTime> NgaySinh { get; set; }
         [Required]
         public string UserName { get; set; }
         [Required]
         [DataType(DataType.Password)]
+        [MinLength(8),MaxLength(16)]
         public string Password { get; set; }
         
         public Nullable<int> DiemTichLuy { get; set; }
